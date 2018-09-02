@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     //글 목록이 있나 없나 확인
-    itemLength:() => {
+    itemLength: function() => {
       return this.todoItems.length;
     }
   },
