@@ -8,15 +8,16 @@
       v-bind:oneContent="oneContent"
       v-bind:oneTitle="oneTitle"
       v-bind:todoItems="todoItems"
-      v-bind:showModal="showModal"
       v-bind:showModalContent="showModalContent"
-      v-bind:itemLength="itemLength"s
+      v-bind:showModal="showModal"
+      v-bind:itemLength="itemLength"
+      v-on:addTodo="addTodo"
       v-on:addToRes="addToRes"
       v-on:closeContent="closeContent"
       v-on:clear="clear"
       v-on:showContent="showContent">
   </router-view>
-  <span id="addToSpan" v-on:click='addTodo'>일정 추가</span>
+
 
 </div>
 </template>
@@ -30,12 +31,11 @@ export default {
   data() {
     return{
       todoItems: [],
-      showModal: false,
       showModalContent: false,
+      showModal:false,
       oneTitle: '',
       oneContent: '',
       nowLength:'',
-      span:''
     }
   },
   created() {
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     //글 목록이 있나 없나 확인
-    itemLength:() => {
+    itemLength: function() {
       return this.todoItems.length;
     }
   },
@@ -63,10 +63,6 @@ export default {
       }else{
         this.showModal = !this.showModal;
       }
-    },
-    //일정 추가 버튼 클릭시 모달 open
-    addTodo() {
-      this.showModal = !this.showModal;
     },
     //X버튼 클릭시 해당 글 삭제
     clear(todoItem, index){
@@ -83,6 +79,9 @@ export default {
     closeContent(){
       this.showModalContent = !this.showModalContent;
     },
+    addTodo(){
+      this.showModal = !this.showModal;
+    }
   }
 }
 </script>
@@ -99,18 +98,6 @@ body {
   font-size: 2.5rem;
   /* border: 5px solid red; */
 }
-#addToSpan{
-  position: fixed;
-  width:10%;
-  height: 10%;
-  bottom:15%;
-  right: 5%;
-  font-size: 2.0rem;
-  color: black;
-  /* border: 3px solid red; */
-}
-#addToSpan:hover{
-  color: blue;
-}
+
 
 </style>

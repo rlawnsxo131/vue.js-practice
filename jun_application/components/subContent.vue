@@ -8,6 +8,7 @@
       </ul>
     </span>
     <span v-else>작성한 일정이 없습니다</span>
+    <span id="addToSpan" v-on:click="addTodo">일정 추가</span>
 
 
 
@@ -46,19 +47,18 @@
 import modal from './common/Modal.vue'
 
 export default {
-  props:['fivelength',
+  props:[
          'oneTitle',
          'oneContent',
-         'showModal',
          'showModalContent',
          'todoItems',
          'itemLength',
-         'fiveAddList'
+         'showModal'
         ],
   data(){
     return{
       title:'제목',
-      content:'내용'
+      content:'내용',
     }
   },
   components:{
@@ -82,6 +82,9 @@ export default {
     clearInput(){
       this.title='제목';
       this.content='내용';
+    },
+    addTodo(){
+      this.$emit('addTodo');
     }
   }
 }
@@ -106,6 +109,19 @@ ul > strong:hover{
   color: red;
 }
 .modalButton:hover{
+  color: blue;
+}
+#addToSpan{
+  position: fixed;
+  width:10%;
+  height: 10%;
+  bottom:15%;
+  right: 5%;
+  font-size: 2.0rem;
+  color: black;
+  /* border: 3px solid red; */
+}
+#addToSpan:hover{
   color: blue;
 }
 
