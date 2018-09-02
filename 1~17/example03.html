@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h3>
+          {{message}},
+          {{data1}}<!-- 1 -->
+        </h3>
+      </header>
+      <section>
+        <p v-bind:id="uid"></p>
+        <button v-on:click="clickBtn1">alert1</button>
+        <!-- 3버튼 추가 -->
+        <button v-on:click="clickBtn2">alert2</button>
+      </section>
+      <!-- 2 flag 바꾸기 -->
+      <ul v-if="flag">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script type="text/javascript">
+      var app = new Vue({
+        data:{
+          message : 'Hello Vue.js!',
+          data1 : 'Test Data', //1
+          uid: '10',
+          uid: '20', //2
+          flag: true
+        },
+        methods:{
+          //ES6문법
+          clickBtn1(){
+            alert("hi1");
+          },
+          //ES5문법
+          // clickBtn:function(){
+          //   console.log("hi");
+          // }
+          clickBtn2(){ //3
+            alert("hi2")
+          }
+        }
+      }).$mount('#app');
+    </script>
+  </body>
+</html>

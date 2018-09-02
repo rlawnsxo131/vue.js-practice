@@ -1,0 +1,58 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{message}}</p>
+      <p>{{message + "!!!"}}</p>
+      <p>{{message.split('').reverse().join('') }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+          data:{
+            message:'Hello Vue.js'
+          }
+        }).$mount('#app');
+    </script>
+  </body>
+</html> -->
+
+<!-- 자바스크립트 표현식에서 주의점 -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      {{var a = 10;}} <!-- X : 선언문 사용 불가능 -->
+      {{if(true) {return 100} }} <!-- X : 분기 구문 사용 불가능 -->
+      {{true ? 100 : 0}}  <!-- O : 삼항 연산자로 표현 가능 -->
+
+      {{message.split('').reverse().join('') }}  <!-- X : 복잡한 연산은 인스턴스 안에서 수행 -->
+      {{reversedMessage}}  <!-- O : 스크립트에서 computed 속성으로 계한한 후 최종 값만 표현 -->
+    </div>
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+      <script type="text/javascript">
+        new Vue({
+          data:{
+            message: 'Hello Vue.js!'
+          },
+          //데이터 속성을 자동으로 계산해 주는 속성
+          computed:{
+            //reversedMessage에 표현되기 전에 연산을 수행하는 함수
+            reversedMessage: function(){
+              //this.message : 상단 data객체 안에 있는 message를 표시
+              return this.message.split('').reverse().join('');
+            }
+          }
+        }).$mount('#app');
+      </script>
+  </body>
+</html>

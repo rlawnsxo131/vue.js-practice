@@ -1,0 +1,58 @@
+<!-- methods -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+    <button v-on:click="reverseMsg">문자열 역순</button>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+          data:{
+            message:'Hello Vue.js!'
+          },
+          methods:{
+            reverseMsg: function(){
+              this.message = this.message.split('').reverse().join('');
+              return this.message;
+            }
+          }
+        }).$mount('#app');
+    </script>
+  </body>
+</html>
+
+<!-- computed -->
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      {{reversemessage}}
+    </div>
+    <button type="button" name="button">문자열 역순</button>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script type="text/javascript">
+      new Vue({
+        data:{
+          message:'Hello Vue js!'
+        },
+        computed:{
+        reversemessage:function(){
+            return this.message.split('').reverse().join('');
+          }
+        }
+      }).$mount('#app');
+    </script>
+  </body>
+</html> -->
