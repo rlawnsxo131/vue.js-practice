@@ -10,22 +10,25 @@
 
 <script>
 import Child from './Child.vue'
+import { mapGetters } from 'vuex'
+import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'app',
+  // Vuex 의 Mutations 메서드 명과 App.vue 메서드 명을 다르게 매칭할 때 {} 사용
+  // addCounter:'addCounter' 형식
   methods: {
-    //mutation 이용시
-    subCounter() {
-      this.$store.commit('subCounter');
-    },
-    //actions 이용시
-    addCounter(){
-      this.$store.dispatch('addCounter')
-    }
+    ...mapMutations([
+      'subCounter'
+    ]),
+    ...mapActions([
+      'addCounter',
+    ])
   },
   computed:{
-    parentCounter(){
-      return this.$store.getters.getCounter;
-    }
+    ...mapGetters({
+      parentCounter:'getCounter'
+    })
   },
   components: {
     // Child 컴포넌트를 하위 컴포넌트로 등록

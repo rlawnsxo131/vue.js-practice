@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
     }
   },
   actions:{
-    addCounter:function(context){
+    addCounter:function(context,payload){
       //commit 대상인 addCounter는 mutations의 메서드를 의미한다
       return context.commit('addCounter');
     },

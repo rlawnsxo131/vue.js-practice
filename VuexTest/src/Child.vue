@@ -8,14 +8,13 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 export default {
-  computed:{
-    childCounter:function(){
-      return this.$store.getters.getCounter;
-    }
-  }
+  computed:mapGetters({
+    childCounter:'getCounter'
+  })
 }
+
 </script>
 
 <style lang="css">
